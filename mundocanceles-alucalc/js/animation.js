@@ -16,22 +16,18 @@ export function animateOverlays() {
   } else {
     explodeCurrent += delta * 0.08;
   }
-
   components.forEach(c => {
     if (c.userData.basePosition && c.userData.explodeOffset) {
       const target = c.userData.explodeOffset.clone().multiplyScalar(explodeCurrent);
       c.position.copy(c.userData.basePosition).add(target);
     }
   });
-
   positionLabels();
   drawDimensionLines();
   update3DLabels();
 }
-
 let frameCount = 0;
 let lastFpsTime = performance.now();
-
 export function updateFPS() {
   frameCount++;
   const now = performance.now();
