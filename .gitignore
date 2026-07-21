@@ -1,0 +1,32 @@
+# Node / build
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# SQL / datos sensibles
+*.sql
+*.db
+
+# Scripts de setup locales
+setup-*.sh
