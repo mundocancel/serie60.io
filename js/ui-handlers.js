@@ -11,6 +11,10 @@ export let explodeCurrent = 0;
 export function getExplodeCurrent() { return explodeCurrent; }
 export function setExplodeCurrent(v) { explodeCurrent = v; }
 
+const sidebar = document.getElementById('sidebar');
+const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+const sidebarToggle = document.getElementById('sidebarToggle');
+
 function rebuildAll() {
   buildWindow();
   updateLabels();
@@ -18,6 +22,13 @@ function rebuildAll() {
 }
 
 export function setupUI() {
+  function toggleSidebar() {
+    const open = sidebar.classList.toggle('sidebar-open');
+    sidebarBackdrop.classList.toggle('visible', open);
+  }
+
+  sidebarToggle.addEventListener('click', toggleSidebar);
+  sidebarBackdrop.addEventListener('click', toggleSidebar);
   document.getElementById('widthSlider').addEventListener('input', e => {
     state.width = parseInt(e.target.value);
     document.getElementById('widthVal').textContent = state.width + ' cm';

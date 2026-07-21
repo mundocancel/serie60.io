@@ -103,6 +103,20 @@ aside {
 aside::-webkit-scrollbar { width: 6px; }
 aside::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 30;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.sidebar-backdrop.visible {
+  display: block;
+  opacity: 1;
+}
+
 .section { margin-bottom: 22px; }
 .section-title {
   font-size: 11px;
@@ -418,9 +432,166 @@ input[type="range"]::-webkit-slider-thumb {
 @media (max-width: 768px) {
   body {
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr auto;
+    grid-template-rows: 56px 1fr auto;
     grid-template-areas: "header" "viewport" "sidebar";
   }
-  aside { max-height: 45vh; border-right: none; border-top: 1px solid var(--border); }
-  .help-hint { display: none; }
+
+  header {
+    padding: 0 12px;
+  }
+  .brand-logo {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  .brand-title {
+    font-size: 14px;
+    letter-spacing: 0.3px;
+  }
+  .brand-sub {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+  .icon-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+  .icon-btn .btn-label {
+    display: none;
+  }
+
+  aside {
+    position: fixed;
+    inset: auto 0 0 0;
+    top: 56px;
+    max-height: 70vh;
+    padding: 14px;
+    border-top-width: 1px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    z-index: 35;
+  }
+  aside.sidebar-open {
+    transform: translateY(0);
+  }
+  .sidebar-backdrop.visible {
+    display: block;
+    opacity: 1;
+  }
+
+  #sidebarToggle {
+    display: inline-flex;
+  }
+
+  .section {
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+  }
+  .control-label,
+  .control-value {
+    font-size: 12px;
+  }
+  input[type="range"] {
+    height: 5px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+  }
+  .type-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .type-btn {
+    padding: 10px 6px;
+    border-radius: 8px;
+    font-size: 11px;
+  }
+  .type-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  .color-grid {
+    gap: 6px;
+  }
+  .info-row {
+    font-size: 11px;
+    padding: 6px 0;
+  }
+  .component-item {
+    padding: 6px 8px;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .component-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  .viewport .view-controls {
+    top: 10px;
+    left: 10px;
+    gap: 4px;
+  }
+  .view-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 9px;
+  }
+  .hud {
+    bottom: 10px;
+    left: 10px;
+    gap: 6px;
+  }
+  .hud-chip {
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 16px;
+  }
+  .mode-indicator {
+    top: 10px;
+    right: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  .mode-indicator .badge {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 8px;
+  }
+  .dimension-label,
+  .component-label-3d {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+@media (min-width: 769px) {
+  #sidebarToggle {
+    display: none;
+  }
+  aside {
+    transform: none !important;
+  }
+  .sidebar-backdrop {
+    display: none !important;
+  }
 }
