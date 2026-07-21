@@ -9,10 +9,6 @@ export function setExplodeTarget(val) {
   explodeTarget = val;
 }
 
-export function getExplodeCurrent() {
-  return explodeCurrent;
-}
-
 export function animateOverlays() {
   const delta = explodeTarget - explodeCurrent;
   if (Math.abs(delta) < 0.001) {
