@@ -1484,7 +1484,25 @@ echo ""
 echo "🔗 Para conectar con GitHub:"
 echo "   git remote add origin https://github.com/TU-USUARIO/$REPO_NAME.git"
 echo "   git branch -M main"
-echo "   git push -u origin main"#!/bin/bash
+echo "   git push -u origin main"plascenciadvsa@192 ~ % cd serie60.io    
+plascenciadvsa@192 serie60.io % ls
+setup-alucalc.sh
+plascenciadvsa@192 serie60.io % chmod +x *
+plascenciadvsa@192 serie60.io % . setup-alucalc.sh 
+.: no such file or directory: setup-alucalc.sh
+plascenciadvsa@192 serie60.io % chmod +x * .      
+plascenciadvsa@192 serie60.io % . /setup-alucalc.sh
+.: no such file or directory: /setup-alucalc.sh
+plascenciadvsa@192 serie60.io % ./ setup-alucalc.sh
+zsh: permission denied: ./
+plascenciadvsa@192 serie60.io % bash setup-alucalc.sh 
+🔧 MundoCanceles · ALUCALC 3D · Configurando repositorio...
+Initialized empty Git repository in /Users/plascenciadvsa/serie60.io/mundocanceles-alucalc/.git/
+setup-alucalc.sh: line 137: ============================================================: command not found
+plascenciadvsa@192 serie60.io % ls
+mundocanceles-alucalc	setup-alucalc.sh
+plascenciadvsa@192 serie60.io % ls
+mundocanceles-alucalc#!/bin/bash
 # ============================================================
 # MundoCanceles · ALUCALC 3D · Setup Script
 # Ejecutar: chmod +x setup-alucalc.sh && ./setup-alucalc.sh
