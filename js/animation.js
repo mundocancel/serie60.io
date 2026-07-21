@@ -1,19 +1,21 @@
 import { components } from './state.js';
 import { positionLabels, update3DLabels } from './labels.js';
 import { drawDimensionLines } from './dimensions.js';
-import { explodeCurrent, explodeTarget } from './ui-handlers.js';
+import { getExplodeCurrent, setExplodeCurrent, explodeTarget } from './ui-handlers.js';
 
 export function animateOverlays() {
-  const delta = explodeTarget - explodeCurrent;
+  const current = getExplodeCurrent();
+  const delta = explodeTarget - current;
   if (Math.abs(delta) < 0.001) {
-    explodeCurrent = explodeTarget;
+    setExplodeCurrent(explodeTarget);
   } else {
-    explodeCurrent += delta * 0.08;
+    setExplodeCurrent(current + delta * 0.08);
   }
 
+  const effective = getExplodeCurrent();
   components.forEach(c => {
     if (c.userData.basePosition && c.userData.explodeOffset) {
-      const target = c.userData.explodeOffset.clone().multiplyScalar(explodeCurrent);
+      const target = c.userData.explodeOffset.clone().multiplyScalar(effective);
       c.position.copy(c.userData.basePosition).add(target);
     }
   });
