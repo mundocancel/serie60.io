@@ -14,6 +14,8 @@ export const typeLabels = {
   fijo: 'Fijo',
   '1hoja': '1 Hoja',
   '2hojas': '2 Hojas',
+  '3hojas': '3 Hojas',
+  '4hojas': '4 Hojas',
   corrediza: 'Corrediza'
 };
 
