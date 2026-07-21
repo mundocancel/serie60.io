@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MundoCanceles · ALUCALC 3D · Despiece Técnico</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-logo">M</div>
+    <div class="brand-text">
+      <span class="brand-title">MundoCanceles</span>
+      <span class="brand-sub">ALUCALC · DESPIECE TÉCNICO</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" id="explodeBtn" title="Vista de despiece">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="btn-label">Despiece</span>
+    </button>
+    <button class="icon-btn" id="labelsBtn" title="Mostrar etiquetas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="btn-label">Etiquetas</span>
+    </button>
+    <button class="icon-btn active" id="dimsBtn" title="Acotaciones">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3z"/><path d="M9 3v18M3 9h18"/></svg>
+      <span class="btn-label">Acotar</span>
+    </button>
+    <button class="icon-btn" id="resetBtn" title="Resetear vista">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+      <span class="btn-label">Reset</span>
+    </button>
+    <button class="icon-btn" id="themeBtn" title="Cambiar tema">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <span class="btn-label">Tema</span>
+    </button>
+  </div>
+</header>
+
+<aside>
+  <div class="section">
+    <div class="section-title">Tipo de Cancel</div>
+    <div class="type-grid" id="typeGrid">
+      <button class="type-btn active" data-type="fijo">Fijo</button>
+      <button class="type-btn" data-type="1hoja">1 Hoja</button>
+      <button class="type-btn" data-type="2hojas">2 Hojas</button>
+      <button class="type-btn" data-type="corrediza">Corrediza</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Dimensiones</div>
+    <div class="control-row">
+      <div class="control-label"><span>Ancho</span><span class="control-value" id="widthVal">120 cm</span></div>
+      <input type="range" id="widthSlider" min="60" max="240" value="120" step="5" />
+    </div>
+    <div class="control-row">
+      <div class="control-label"><span>Alto</span><span class="control-value" id="heightVal">140 cm</span></div>
+      <input type="range" id="heightSlider" min="60" max="240" value="140" step="5" />
+    </div>
+    <div class="control-row">
+      <div class="control-label"><span>Vidrio</span><span class="control-value" id="glassVal">6 mm</span></div>
+      <input type="range" id="glassSlider" min="3" max="12" value="6" step="1" />
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Color del Perfil</div>
+    <div class="color-grid" id="colorGrid">
+      <div class="color-swatch active" data-color="#E8E8E8" style="background:#E8E8E8" title="Blanco"></div>
+      <div class="color-swatch" data-color="#1a1a1a" style="background:#1a1a1a" title="Negro"></div>
+      <div class="color-swatch" data-color="#B8BCC2" style="background:#B8BCC2" title="Plata"></div>
+      <div class="color-swatch" data-color="#5C4033" style="background:#5C4033" title="Bronce"></div>
+      <div class="color-swatch" data-color="#2F4F4F" style="background:#2F4F4F" title="Verde"></div>
+      <div class="color-swatch" data-color="#C9A961" style="background:linear-gradient(135deg,#C9A961,#8B6914)" title="Dorado"></div>
+      <div class="color-swatch" data-color="#8B0000" style="background:#8B0000" title="Rojo"></div>
+      <div class="color-swatch" data-color="#1E3A5F" style="background:#1E3A5F" title="Azul"></div>
+      <div class="color-swatch" data-color="#6B4423" style="background:linear-gradient(135deg,#8B5A2B,#4A2E17)" title="Madera"></div>
+      <div class="color-swatch" data-color="#4A5568" style="background:#4A5568" title="Grafito"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Lista de Componentes</div>
+    <div class="component-list" id="componentList"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Especificaciones</div>
+    <div class="info-table">
+      <div class="info-row"><span>Área total</span><span id="infoArea">1.68 m²</span></div>
+      <div class="info-row"><span>Perímetro</span><span id="infoPerim">5.20 m</span></div>
+      <div class="info-row"><span>Peso estimado</span><span id="infoWeight">28.4 kg</span></div>
+      <div class="info-row"><span>Tipo</span><span id="infoType">Fijo</span></div>
+      <div class="info-row"><span>Perfil</span><span id="infoProfile">Aluminio 6063-T5</span></div>
+    </div>
+  </div>
+</aside>
+
+<div class="viewport" id="viewport">
+  <canvas id="canvas3d" tabindex="0" role="img" aria-label="Visor 3D de cancel MundoCanceles"></canvas>
+  <svg id="overlaySvg"></svg>
+
+  <div class="view-controls">
+    <button class="view-btn active" data-view="3d" title="Vista 3D">3D</button>
+    <button class="view-btn" data-view="front" title="Vista Frontal">F</button>
+    <button class="view-btn" data-view="side" title="Vista Lateral">L</button>
+    <button class="view-btn" data-view="top" title="Vista Superior">S</button>
+  </div>
+
+  <div class="mode-indicator" id="modeIndicator">
+    <span id="modeText">Vista 3D</span>
+    <span class="badge" id="modeBadge">PBR</span>
+  </div>
+
+  <div class="dimension-label" id="labelWidth" style="display:none;">
+    <span class="value" id="labelWidthVal">120</span><span class="unit">cm</span>
+  </div>
+  <div class="dimension-label" id="labelHeight" style="display:none;">
+    <span class="value" id="labelHeightVal">140</span><span class="unit">cm</span>
+  </div>
+
+  <div class="hud">
+    <div class="hud-chip"><span class="dot"></span><span id="fpsCounter">60 FPS</span></div>
+    <div class="hud-chip">PBR · HDRI</div>
+  </div>
+
+  <div class="help-hint">
+    <strong>Controles:</strong><br>
+    🖱️ Arrastra para rotar · Scroll zoom<br>
+    ⌨️ <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> rotar
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <div class="loader-text">MundoCanceles · Cargando despiece técnico...</div>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
