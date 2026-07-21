@@ -56,6 +56,10 @@ controls.dampingFactor = 0.08;
 controls.minDistance = 2;
 controls.maxDistance = 10;
 controls.maxPolarAngle = Math.PI * 0.9;
+controls.zoomSpeed = 1.2;
+controls.update();
+
+console.log('🎬 Scene ready — groups:', scene.children.length, 'camera:', camera.position.toArray().map(n => n.toFixed(2)));
 
 export const windowGroup = new THREE.Group();
 scene.add(windowGroup);

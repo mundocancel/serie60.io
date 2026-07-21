@@ -8,6 +8,8 @@ import { setView } from './controls.js';
 
 export let explodeTarget = 0;
 export let explodeCurrent = 0;
+export function getExplodeCurrent() { return explodeCurrent; }
+export function setExplodeCurrent(v) { explodeCurrent = v; }
 
 function rebuildAll() {
   buildWindow();
