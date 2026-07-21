@@ -1,7 +1,17 @@
 import { components } from './state.js';
 import { positionLabels, update3DLabels } from './labels.js';
 import { drawDimensionLines } from './dimensions.js';
-import { explodeCurrent, explodeTarget } from './ui-handlers.js';
+
+let explodeCurrent = 0;
+let explodeTarget = 0;
+
+export function setExplodeTarget(val) {
+  explodeTarget = val;
+}
+
+export function getExplodeCurrent() {
+  return explodeCurrent;
+}
 
 export function animateOverlays() {
   const delta = explodeTarget - explodeCurrent;

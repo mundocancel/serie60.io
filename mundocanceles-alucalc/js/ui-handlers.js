@@ -5,9 +5,7 @@ import { updateInfo } from './components.js';
 import { frameMaterial, glassMaterial, floorMat } from './materials.js';
 import { scene, controls, camera } from './scene.js';
 import { setView } from './controls.js';
-
-export let explodeTarget = 0;
-export let explodeCurrent = 0;
+import { setExplodeTarget } from './animation.js';
 
 function rebuildAll() {
   buildWindow();
@@ -74,7 +72,7 @@ export function setupUI() {
 function toggleExplode() {
   state.exploded = !state.exploded;
   document.getElementById('explodeBtn').classList.toggle('active', state.exploded);
-  explodeTarget = state.exploded ? 1 : 0;
+  setExplodeTarget(state.exploded ? 1 : 0);
   updateModeIndicator();
 }
 
