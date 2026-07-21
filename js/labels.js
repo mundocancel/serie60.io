@@ -9,10 +9,10 @@ const labelHeight = document.getElementById('labelHeight');
 
 export function projectToScreen(worldPos) {
   const vec = worldPos.clone().project(camera);
-  const rect = document.getElementById('canvas3d').getBoundingClientRect();
+  const rect = viewport.getBoundingClientRect();
   return {
-    x: (vec.x * 0.5 + 0.5) * rect.width,
-    y: (-vec.y * 0.5 + 0.5) * rect.height
+    x: Math.max(0, Math.min(rect.width, (vec.x * 0.5 + 0.5) * rect.width)),
+    y: Math.max(0, Math.min(rect.height, (-vec.y * 0.5 + 0.5) * rect.height)),
   };
 }
 

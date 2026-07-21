@@ -92,6 +92,32 @@ export function buildWindow() {
     windowGroup.add(createGlassPane(paneW, H - 0.02, glassThickness, new THREE.Vector3((paneW/2 + fp * 0.35 / 2), 0, 0), 'Vidrio Der.', new THREE.Vector3(0.3, 0, 0.5)));
     windowGroup.add(createHandle(new THREE.Vector3(-0.05, 0, fd/2 + 0.02), 'Manija Izq.', new THREE.Vector3(-0.2, 0, 0.4)));
     windowGroup.add(createHandle(new THREE.Vector3(0.05, 0, fd/2 + 0.02), 'Manija Der.', new THREE.Vector3(0.2, 0, 0.4)));
+  } else if (state.type === '3hojas') {
+    windowGroup.add(createFramePiece(fp * 0.7, H, fd, new THREE.Vector3(-W * 0.16, 0, 0), 'Montante 1', new THREE.Vector3(-0.3, 0, 0.3)));
+    windowGroup.add(createFramePiece(fp * 0.7, H, fd, new THREE.Vector3(W * 0.16, 0, 0), 'Montante 2', new THREE.Vector3(0.3, 0, 0.3)));
+    const pw3 = (W - fp * 0.7 * 2) / 3;
+    windowGroup.add(createGlassPane(pw3, H - 0.02, glassThickness, new THREE.Vector3(-W * 0.22, 0, 0), 'Hoja 1', new THREE.Vector3(-0.35, 0, 0.5)));
+    windowGroup.add(createGlassPane(pw3, H - 0.02, glassThickness, new THREE.Vector3(0, 0, 0), 'Hoja 2', new THREE.Vector3(0, 0, 0.5)));
+    windowGroup.add(createGlassPane(pw3, H - 0.02, glassThickness, new THREE.Vector3(W * 0.22, 0, 0), 'Hoja 3', new THREE.Vector3(0.35, 0, 0.5)));
+    windowGroup.add(createHandle(new THREE.Vector3(-W * 0.22 + pw3/2, 0, fd/2 + 0.02), 'Manija 1', new THREE.Vector3(-0.2, 0, 0.4)));
+    windowGroup.add(createHandle(new THREE.Vector3(W * 0.22 - pw3/2, 0, fd/2 + 0.02), 'Manija 3', new THREE.Vector3(0.2, 0, 0.4)));
+  } else if (state.type === '4hojas') {
+    windowGroup.add(createFramePiece(fp * 0.7, H, fd, new THREE.Vector3(-W * 0.2, 0, 0), 'Montante 1', new THREE.Vector3(-0.35, 0, 0.3)));
+    windowGroup.add(createFramePiece(fp * 0.7, H, fd, new THREE.Vector3(0, 0, 0), 'Montante 2', new THREE.Vector3(0, 0, 0.3)));
+    windowGroup.add(createFramePiece(fp * 0.7, H, fd, new THREE.Vector3(W * 0.2, 0, 0), 'Montante 3', new THREE.Vector3(0.35, 0, 0.3)));
+    const pw4 = (W - fp * 0.7 * 3) / 4;
+    const x1 = -W * 0.325;
+    const x2 = -W * 0.1125;
+    const x3 = W * 0.1125;
+    const x4 = W * 0.325;
+    windowGroup.add(createGlassPane(pw4, H - 0.02, glassThickness, new THREE.Vector3(x1, 0, 0), 'Hoja 1', new THREE.Vector3(-0.4, 0, 0.5)));
+    windowGroup.add(createGlassPane(pw4, H - 0.02, glassThickness, new THREE.Vector3(x2, 0, 0), 'Hoja 2', new THREE.Vector3(-0.15, 0, 0.5)));
+    windowGroup.add(createGlassPane(pw4, H - 0.02, glassThickness, new THREE.Vector3(x3, 0, 0), 'Hoja 3', new THREE.Vector3(0.15, 0, 0.5)));
+    windowGroup.add(createGlassPane(pw4, H - 0.02, glassThickness, new THREE.Vector3(x4, 0, 0), 'Hoja 4', new THREE.Vector3(0.4, 0, 0.5)));
+    windowGroup.add(createHandle(new THREE.Vector3(x1 + pw4/2, 0, fd/2 + 0.02), 'Manija 1', new THREE.Vector3(-0.25, 0, 0.4)));
+    windowGroup.add(createHandle(new THREE.Vector3(x2 + pw4/2, 0, fd/2 + 0.02), 'Manija 2', new THREE.Vector3(-0.1, 0, 0.4)));
+    windowGroup.add(createHandle(new THREE.Vector3(x3 + pw4/2, 0, fd/2 + 0.02), 'Manija 3', new THREE.Vector3(0.1, 0, 0.4)));
+    windowGroup.add(createHandle(new THREE.Vector3(x4 + pw4/2, 0, fd/2 + 0.02), 'Manija 4', new THREE.Vector3(0.25, 0, 0.4)));
   } else if (state.type === 'corrediza') {
     const paneW = W * 0.55;
     const paneH = H - 0.02;

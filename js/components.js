@@ -87,7 +87,7 @@ export function updateInfo() {
   const area = W * H;
   const perim = 2 * (W + H);
   const weight = (area * 12 + perim * 1.8).toFixed(1);
-  const typeLabel = { fijo:'Fijo', '1hoja':'1 Hoja', '2hojas':'2 Hojas', corrediza:'Corrediza' }[state.type];
+  const typeLabel = { fijo:'Fijo', '1hoja':'1 Hoja', '2hojas':'2 Hojas', '3hojas':'3 Hojas', '4hojas':'4 Hojas', corrediza:'Corrediza' }[state.type];
   document.getElementById('infoArea').textContent = area.toFixed(2) + ' m²';
   document.getElementById('infoPerim').textContent = perim.toFixed(2) + ' m';
   document.getElementById('infoWeight').textContent = weight + ' kg';
